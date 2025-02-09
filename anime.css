@@ -1,67 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-body{
+@import url('https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
     min-height: 100vh;
     margin: 0;
-    font-family: Poppins;
+    font-family: 'Poppins', sans-serif;
     color: #1E1E1E;
     background-color: #CDCDCD;
     background-image:
-    repeating-linear-gradient(
-        to right, transparent 0 150px, #0001 150px 151px
-    ),
-    repeating-linear-gradient(
-        to bottom, transparent 0 150px, #0001 150px 151px
-    ),
-    linear-gradient(to right, #CDCDCDcc, #CDCDCDcc),
-    url(images/bg.jpg);
+        repeating-linear-gradient(to right, transparent 0 150px, #0001 150px 151px),
+        repeating-linear-gradient(to bottom, transparent 0 150px, #0001 150px 151px),
+        linear-gradient(to right, #CDCDCDcc, #CDCDCDcc),
+        url(images/bg.jpg);
+    overflow-x: hidden;
 }
-*{
+
+* {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
-header{
+header {
     width: min(1200px, 90vw);
     margin: auto;
     display: flex;
     justify-content: space-between;
-    padding-top: 50px;
-    height: 0px;
+    align-items: center;
+    padding: 20px 0;
     flex-wrap: wrap;
+    animation: fadeInDown 1s ease-in-out;
 }
-header h1{
-    font-family: "Karantina", system-ui;
-    font-size: 16vw;
+
+header h1 {
+    font-family: 'Karantina', cursive;
+    font-size: 10vw;
     line-height: 0.8em;
+    color: #333;
+    animation: slideInLeft 1s ease-in-out;
 }
-header .author{
+
+header .author {
     text-align: right;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-header h3{
-    font-family: "Karantina", system-ui;
-    font-size: 5vw;
-}
-header .author div{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-header .author div p:nth-child(2){
-    font-weight: 500;
+
+header h3 {
+    font-size: 1.5rem;
+    color: #555;
+    animation: fadeInUp 1s ease-in-out;
 }
 
-header .author img{
-    width: 250px;
+header .author img {
+    width: 100px;
+    border-radius: 50%;
+    animation: bounceIn 1.2s ease;
 }
-.banner{
+
+.banner {
     margin-top: -50px;
     height: 100vh;
     overflow: hidden;
     position: relative;
 }
-.product{
+
+.product {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -70,17 +73,14 @@ header .author img{
     width: 500px;
     transition: 0.7s;
 }
-.product .soda{
+
+.product .soda {
     position: absolute;
     bottom: 0;
     left: calc(50%);
     transform: translateX(-50%);
-}
-.soda{
     --left: 0px;
-    background: 
-        var(--url) var(--left),
-        url(images/mockup.png) 0 0;
+    background: var(--url) var(--left), url(images/mockup.png) 0 0;
     background-size: auto 100%;
     width: 280px;
     aspect-ratio: 2 / 4;
@@ -89,75 +89,105 @@ header .author img{
     mask-image: url(images/mockup.png);
     mask-size: auto 100%;
 }
-.soda:nth-child(2){
+
+.soda:nth-child(2) {
     opacity: 0;
 }
-.product:hover{
+
+.product:hover {
     bottom: 300px;
 }
-.product:hover .soda:nth-child(2){
+
+.product:hover .soda:nth-child(2) {
     opacity: 1;
     --left: 500px;
 }
-.product:hover .soda:nth-child(1){
+
+.product:hover .soda:nth-child(1) {
     opacity: 0;
     --left: 500px;
 }
 
-.rock{
+.rock {
     position: absolute;
-    inset: 0 0 0 0;
+    inset: 0;
     width: 100%;
     pointer-events: none;
 }
-.rock img:nth-child(1){
+
+.rock img {
     position: absolute;
+    transition: 0.7s;
+}
+
+.rock img:nth-child(1) {
     height: 170px;
     left: 50%;
     transform: translateX(-50%);
     bottom: 30px;
-    transition: 0.7s;
     z-index: 1;
 }
-.rock img:nth-child(2){
-    position: absolute;
+
+.rock img:nth-child(2) {
     height: 50%;
     left: 0;
     bottom: 0;
-    transition: 0.7s;
 }
-.rock img:nth-child(3){
-    position: absolute;
+
+.rock img:nth-child(3) {
     height: 100%;
     right: 0;
     bottom: -100px;
     rotate: -25deg;
-    transition: 0.7s;
 }
-.banner:has(.product:hover) .rock img:nth-child(1){
+
+.banner:hover .rock img:nth-child(1) {
     transform: translateX(-50%) translateY(50px);
 }
-.banner:has(.product:hover) .rock img:nth-child(2){
+
+.banner:hover .rock img:nth-child(2) {
     transform: translateX(-100px) translateY(100px);
 }
-.banner:has(.product:hover) .rock img:nth-child(3){
+
+.banner:hover .rock img:nth-child(3) {
     transform: translateX(100px) translateY(100px);
 }
+
 @media screen and (max-width: 1023px) {
-    
-    .soda{
+    .soda {
         width: 400px;
     }
 }
+
 @media screen and (max-width: 767px) {
-    .soda{
+    .soda {
         width: 250px;
     }
-    header img{
+    header img {
         display: none;
     }
-    header .author{
+    header .author {
         width: 100%;
     }
+}
 
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
 }
